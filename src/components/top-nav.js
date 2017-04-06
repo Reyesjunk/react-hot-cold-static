@@ -1,21 +1,35 @@
 import React from 'react';
 
-export default function TopNav(props) {
-    return (
-        <nav>
-            <ul className="clearfix">
-                <li>
-                    <a className="what" href="#">
-                        What?
-                    </a>
-                </li>
-                <li>
-                    <a className="new" href="#">
-                        + New Game
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    );
+export default class TopNav extends React.Component {
+    info(event) {
+        if(this.props.info) {
+            this.props.info();
+        }
+    }
+
+    newGame(event) {
+        if(this.props.newGame) {
+            this.props.newGame();
+        }
+    }
+    
+    render() {
+        return (
+            <nav>
+                <ul className="clearfix">
+                    <li>
+                        <a className="what" href="#" onClick={e => this.info(e)}>
+                            What?
+                        </a>
+                    </li>
+                    <li>
+                        <a className="new" href="#" onClick={e => this.newGame(e)}>
+                            + New Game
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        );
+    }
 }
 

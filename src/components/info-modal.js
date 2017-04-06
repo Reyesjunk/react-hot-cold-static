@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function InfoModal(props) {
-    onClose(e) {
-        // e.preventDefault();
-        this.props.onClose();
- 
+export default class InfoModal extends React.Component {
+    onClose(event) {
+        if (this.props.onClose) {
+            this.props.onClose();
+        }
     }
 
     render() {
@@ -20,7 +20,7 @@ export default function InfoModal(props) {
                             <li>3. You will <strong>get feedback</strong> on how close ("hot") or far ("cold") your guess is.</li>
                         </ul>
                         <p>So, Are you ready?</p>
-                        <a className="close" href="#" onClick={e=> this.onClose(e)}>Got It!</a>
+                        <a className="close" href="#" onClick={e => this.onClose(e)}>Got It!</a>
                     </div>
                 </div>
             </div>
