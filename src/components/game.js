@@ -32,46 +32,41 @@ export default class Game extends React.Component {
             return;
         }
         const comparison = Math.abs(guess - this.state.correctAnswer);
+
+        let feedback;
         if(comparison >= 50){
-            this.setState({
-                feedback: 'You are ice cold'
-            });
+            feedback= 'You are ice cold'
         }
         else if(comparison >= 40) {
-            this.setState({
-                feedback: 'You are ice cold... slightly'
-            });
+
+            feedback= 'You are ice cold... slightly'
         }
         else if(comparison >= 30) {
-            this.setState({
-                feedback: 'You are cold'
-            });
+
+            feedback=  'You are cold'
         }
         else if(comparison >= 20) {
-            this.setState({
-                feedback: 'You are warm'
-            });
+
+            feedback= 'You are warm'
         }
         else if(comparison >= 10) {
-            this.setState({
-                feedback: 'You are warmer'
-            });
+            feedback=  'You are warmer'
         }
         else if(comparison >= 1) {
-            this.setState({
-                feedback: 'You are super HOT'
-            });
+            feedback=  'You are super HOT'
         }
         else{
-            this.setState({
-                feedback: 'You got it right!'
-            });
+            feedback=  'You got it right!'
         }
+        this.setState({
+            feedback,
+            guesses: [...this.state.guesses, guess]
+        });
     }
     render(){
         return (
             <div>
-                <Header aNewGame={() => this.resetGame() }/>
+                <Header newGame={() => this.resetGame() }/>
                 <GuessSection feedback={this.state.feedback}
                     onGuess={(guess) => this.guess(guess)} />
                 <GuessCount count={this.state.guesses.length} />

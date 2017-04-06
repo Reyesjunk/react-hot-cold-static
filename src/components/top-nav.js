@@ -8,6 +8,7 @@ export default class TopNav extends React.Component {
     }
 
     newGame(event) {
+        console.log('reached it')
         if(this.props.newGame) {
             this.props.newGame();
         }
@@ -23,7 +24,7 @@ export default class TopNav extends React.Component {
                         </a>
                     </li>
                     <li>
-                        <a className="new" href="#" onClick={e => this.newGame(e)}>
+                        <a className="new" href="#" onClick={e => this.newGame()}>
                             + New Game
                         </a>
                     </li>
